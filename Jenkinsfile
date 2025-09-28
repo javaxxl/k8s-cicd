@@ -9,7 +9,7 @@ pipeline {
                     def imageTag = "v${env.BUILD_NUMBER}"
                     
                     echo "Building image: ${imageName}:${imageTag}"
-                    sh "docker build -t ${imageName}:${imageTag} ."
+                    sh "docker build -t ${imageName}:${imageTag} ./src"
                     
                     echo "Loading image into cluster nodes..."
                     sh "docker save ${imageName}:${imageTag} | multipass exec jenkins-vm -- sudo ctr -n=k8s.io image import -"
