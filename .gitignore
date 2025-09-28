@@ -1,0 +1,15 @@
+# Local artifacts
+*.tar
+*.zip
+*.gz
+*.tgz
+*.log
+
+# Python
+__pycache__/
+*.pyc
+
+# Node/Yarn (if any)
+node_modules/
+
+
