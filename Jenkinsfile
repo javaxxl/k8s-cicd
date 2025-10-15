@@ -13,7 +13,7 @@ pipeline {
                     
                     echo "Loading image into cluster nodes..."
                     sh "docker save ${imageName}:${imageTag} | sudo ctr -n=k8s.io image import -"
-                    sh "docker save ${imageName}:${imageTag} | multipass exec kafka-1 --  ctr -n=k8s.io image import -"
+                    sh "docker save ${imageName}:${imageTag} | multipass exec kafka-1 -- ctr -n=k8s.io image import -"
                 }
             }
         }
