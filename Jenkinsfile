@@ -12,8 +12,8 @@ pipeline {
                     sh "docker build -t ${imageName}:${imageTag} ./src"
                     
                     echo "Loading image into cluster nodes..."
-                    sh "docker save ${imageName}:${imageTag} | multipass exec jenkins-vm -- sudo ctr -n=k8s.io image import -"
-                    sh "docker save ${imageName}:${imageTag} | multipass exec kafka-1 -- sudo ctr -n=k8s.io image import -"
+                    sh "docker save ${imageName}:${imageTag} | sudo ctr -n=k8s.io image import -"
+                    sh "docker save ${imageName}:${imageTag} | multipass exec kafka-1 --  ctr -n=k8s.io image import -"
                 }
             }
         }
